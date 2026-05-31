@@ -1,65 +1,134 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div>
+      <h1>
+        <Greeting name="Fluke"></Greeting>
+      </h1>
+
+      <MyButton></MyButton>
+      <ListName></ListName>
+      <Counter></Counter>
+      <ToggleButton></ToggleButton>
+      <LiveInput></LiveInput>
+      <ProductCard name="Shoes" price={29} inStock={false}></ProductCard>
+      <LikeButton label="Road the price"></LikeButton>
     </div>
+  );
+}
+
+function Greeting({ name }: { name: string }) {
+  return (
+    <>
+      Hello , {name} {2 * 2}
+    </>
+  );
+}
+
+function MyButton() {
+  return (
+    <button className="bg-blue-500 text-white px-4 py-2 rounded">
+      I`m a button
+    </button>
+  );
+}
+
+function ListName() {
+  const names = ["alice", "robert", "junior"];
+
+  return (
+    <ul>
+      {names.map((name) => (
+        <li key={name}>{name}</li>
+      ))}
+    </ul>
+  );
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button
+        onClick={() => setCount(count - 1)}
+        disabled={count === 0}
+        className="bg-red-500 text-white px-3 py-1 rounded disable:opacity-50"
+      >
+        -
+      </button>
+      <span className="px-4">{count}</span>
+      <button
+        onClick={() => setCount(count + 1)}
+        className="bg-green-500 text-white px-3 py-1 rounded"
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+function ToggleButton() {
+  const [isOn, setIsOn] = useState(false);
+
+  return (
+    <button
+      onClick={() => setIsOn(!isOn)}
+      className={`px-4 py-2 rounded text-white ${isOn ? "bg-green-500" : "bg-red-500"}`}
+    >
+      {isOn ? "ON" : "OFF"}
+    </button>
+  );
+}
+
+function LiveInput() {
+  const [text, setText] = useState("");
+  return (
+    <div>
+      <input
+        className="border px-2 py-1"
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Type Something Idiot"
+      ></input>
+      <p>You typed: {text}</p>
+    </div>
+  );
+}
+
+type ProductProps = {
+  name: string;
+  price: number;
+  inStock: boolean;
+};
+function ProductCard({ name, price, inStock }: ProductProps) {
+  return (
+    <div className="border p-4 rounded">
+      <h2 className="fond-bold">{name}</h2>
+      <p>${price}</p>
+      <span className={inStock ? "text-green-500" : "text-red-500"}>
+        {inStock ? "In Stock" : "Out of Stock"}
+      </span>
+    </div>
+  );
+}
+
+function LikeButton({ label }: { label: string }) {
+  const [liked, setLiked] = useState(false);
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setLiked(!liked);
+    setCount(liked ? count - 1 : count + 1);
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`px-4 py-2 rounded ${liked ? "bg-pink-500" : "bg-gray-500"}`}
+    >
+      {liked ? "❤️" : "🤍"} {label} ({count})
+    </button>
   );
 }
