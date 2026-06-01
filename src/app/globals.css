@@ -3,7 +3,7 @@
 :root {
   --background: #0f1a14;
   --foreground: #e8f0eb;
-  --primary: #2d6a4f;
+  --primary: oklch(0.248 0.013 160);
   --accent: #52b788;
   --muted: #1e2d24;
 }
