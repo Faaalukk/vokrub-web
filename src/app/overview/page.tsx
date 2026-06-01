@@ -7,7 +7,7 @@ import Transactions from "../components/Transactions";
 
 export default function Overview() {
   return (
-    <div className="bg-[#121915]">
+    <div className="bg-background">
       <Header title="Overview" />
       <div className="py-6 px-6 flex flex-col gap-6">
         <div className="flex items-stretch gap-4">
