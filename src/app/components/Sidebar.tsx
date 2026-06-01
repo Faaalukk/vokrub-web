@@ -1,9 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import { LayoutDashboard, Sun, Swords, User } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Coins, Sun, User, Users } from "lucide-react";
+
+const navItems = [
+  { href: "/overview", label: "Overview", icon: Sun },
+  { href: "/customer", label: "Customers", icon: Users },
+  { href: "/earning", label: "Earning", icon: Coins },
+  { href: "/permission", label: "Permission", icon: User },
+];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
-    <nav className="w-64 h-screen bg-primary text-white">
+    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-border">
       <div className="flex flex-col gap-4 px-4 py-4 mt-2">
         {/* Logo */}
         <div className="flex items-center gap-3">
@@ -16,34 +28,24 @@ export default function Sidebar() {
           ADMIN CONSOLE
         </span>
         {/* Nav Items */}
-        <Link
-          href="/overview"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-800 text-green-400"
-        >
-          <Sun size={18} />
-          <span>Overview</span>
-        </Link>
-        <Link
-          href="/customer"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800 text-gray-300"
-        >
-          <LayoutDashboard size={18} />
-          <span>Customers</span>
-        </Link>
-        <Link
-          href="/earning"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800 text-gray-300"
-        >
-          <Swords size={18} />
-          <span>Earning</span>
-        </Link>
-        <Link
-          href="/permission"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800 text-gray-300"
-        >
-          <User size={18} />
-          <span>Permission</span>
-        </Link>
+        {navItems.map(({ href, label, icon: Icon }) => {
+          const isActive = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors
+                ${
+                  isActive
+                    ? "bg-gray-800 text-green-400"
+                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                }`}
+            >
+              <Icon size={18} />
+              <span>{label}</span>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
