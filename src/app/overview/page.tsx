@@ -5,7 +5,7 @@ import RevenueCard from "../components/RevenueCard";
 import MostStoredWords from "../components/MostStoredWord";
 import Transactions from "../components/Transactions";
 
-export default function Overview() {
+export default function OverviewPage() {
   return (
     <div className="bg-background">
       <Header title="Overview" />
