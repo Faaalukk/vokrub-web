@@ -2,10 +2,11 @@ import { Coins, Crown, Users } from "lucide-react";
 import Header from "../components/Header";
 import SummaryCard from "../components/SummaryCard";
 import RevenueCard from "../components/RevenueCard";
+import MostStoredWords from "../components/MostStoredWord";
 
 export default function Overview() {
   return (
-    <div>
+    <div className="bg-[#121915]">
       <Header title="Overview" />
       <div className="py-6 px-6 flex flex-col gap-6">
         <div className="flex items-stretch gap-4">
@@ -34,8 +35,13 @@ export default function Overview() {
             change={-2.1}
           ></SummaryCard>
         </div>
-        <div className="flex items-stretch gap-4">
-          <RevenueCard></RevenueCard>
+        <div className="grid grid-cols-6 gap-4">
+          <div className="col-span-4">
+            <RevenueCard></RevenueCard>
+          </div>
+          <div className="col-span-2">
+            <MostStoredWords></MostStoredWords>
+          </div>
         </div>
       </div>
     </div>

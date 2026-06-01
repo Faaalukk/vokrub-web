@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,13 +9,13 @@ const navItems = [
   { href: "/customer", label: "Customers", icon: LayoutDashboard },
   { href: "/earning", label: "Earning", icon: Swords },
   { href: "/permission", label: "Permission", icon: User },
-]
+];
 
 export default function Sidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
-    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-gray-700">
+    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-border">
       <div className="flex flex-col gap-4 px-4 py-4 mt-2">
         {/* Logo */}
         <div className="flex items-center gap-3">
@@ -29,21 +29,22 @@ export default function Sidebar() {
         </span>
         {/* Nav Items */}
         {navItems.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href
+          const isActive = pathname === href;
           return (
             <Link
               key={href}
               href={href}
               className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors
-                ${isActive
-                  ? "bg-gray-800 text-green-400"
-                  : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                ${
+                  isActive
+                    ? "bg-gray-800 text-green-400"
+                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
                 }`}
             >
               <Icon size={18} />
               <span>{label}</span>
             </Link>
-          )
+          );
         })}
       </div>
     </nav>
