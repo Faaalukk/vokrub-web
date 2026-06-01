@@ -6,7 +6,7 @@ export default function Overview() {
   return (
     <div>
       <Header title="Overview" />
-      <div className="flex items-center py-6 px-6 gap-4">
+      <div className="flex items-stretch py-6 px-6 gap-4">
         <SummaryCard
           icon={<Coins size={18} />}
           amount="$3,540"

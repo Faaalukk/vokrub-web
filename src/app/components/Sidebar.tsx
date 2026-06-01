@@ -3,7 +3,7 @@ import { LayoutDashboard, Sun, Swords, User } from "lucide-react";
 
 export default function Sidebar() {
   return (
-    <nav className="w-64 h-screen bg-primary text-white">
+    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-gray-700 ">
       <div className="flex flex-col gap-4 px-4 py-4 mt-2">
         {/* Logo */}
         <div className="flex items-center gap-3">
