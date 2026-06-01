@@ -16,7 +16,7 @@ const max = Math.max(...words.map((w) => w.count));
 
 export default function MostStoredWords() {
   return (
-    <div className="bg-muted rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-muted rounded-2xl p-6 flex flex-col gap-4 border-2 border-border">
       <h2 className="text-lg font-bold">Most-stored words</h2>
       <div className="flex flex-col gap-4">
         {words.map((entry, index) => (

@@ -16,7 +16,7 @@ export default function SummaryCard({
   const isPositive = change >= 0;
 
   return (
-    <div className="bg-muted rounded-2xl p-4 flex-1 flex flex-col gap-4">
+    <div className="bg-muted rounded-2xl p-4 flex-1 flex flex-col gap-4 border-2 border-border">
       {/* Top row — icon + change */}
       <div className="flex items-center justify-between">
         <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-accent">

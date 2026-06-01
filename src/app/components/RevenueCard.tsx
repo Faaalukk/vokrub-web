@@ -25,7 +25,7 @@ function formatValue(value: number) {
 
 export default function RevenueCard() {
   return (
-    <div className="bg-muted rounded-2xl p-6 flex-1">
+    <div className="bg-muted rounded-2xl p-6 flex-1 border-2 border-border">
       <h2 className="text-lg font-bold mb-6">Revenue</h2>
       <ResponsiveContainer width="100%" height={240}>
         <BarChart

@@ -58,7 +58,7 @@ const transactions: Transaction[] = [
 
 export default function Transactions() {
   return (
-    <div className="bg-muted rounded-2xl p-6">
+    <div className="bg-muted rounded-2xl p-6 border-2 border-border">
       <h2 className="text-lg font-bold mb-4">Recent transactions</h2>
       <div className="flex flex-col divide-y divide-gray-800">
         {transactions.map((tx) => (
