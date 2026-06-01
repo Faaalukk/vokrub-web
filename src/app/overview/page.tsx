@@ -8,7 +8,7 @@ export default function Overview() {
     <div>
       <Header title="Overview" />
       <div className="py-6 px-6 flex flex-col gap-6">
-        <div className="flex items-stretch  gap-4">
+        <div className="flex items-stretch gap-4">
           <SummaryCard
             icon={<Coins size={18} />}
             amount="$3,540"
@@ -34,7 +34,7 @@ export default function Overview() {
             change={-2.1}
           ></SummaryCard>
         </div>
-        <div className="px-6 ">
+        <div className="flex items-stretch gap-4">
           <RevenueCard></RevenueCard>
         </div>
       </div>
