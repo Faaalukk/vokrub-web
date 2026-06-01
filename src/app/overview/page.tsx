@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import SummaryCard from "../components/SummaryCard";
 import RevenueCard from "../components/RevenueCard";
 import MostStoredWords from "../components/MostStoredWord";
+import Transactions from "../components/Transactions";
 
 export default function Overview() {
   return (
@@ -42,6 +43,9 @@ export default function Overview() {
           <div className="col-span-2">
             <MostStoredWords></MostStoredWords>
           </div>
+        </div>
+        <div className="">
+          <Transactions />
         </div>
       </div>
     </div>
