@@ -7,11 +7,13 @@ type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[];
   data: T[];
+  total?: number;
 };
 
 export default function Table<T extends { id: string | number }>({
   columns,
   data,
+  total,
 }: TableProps<T>) {
   return (
     <div className="w-full overflow-x-auto rounded-2xl border border-border">
@@ -58,6 +60,13 @@ export default function Table<T extends { id: string | number }>({
           ))}
         </tbody>
       </table>
+
+      {/* Footer */}
+      {total !== undefined && (
+        <div className="px-4 py-3 border-t border-border text-sm text-gray-500">
+          {data.length} of {total} customers
+        </div>
+      )}
     </div>
   );
 }

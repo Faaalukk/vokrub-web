@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Table from "../components/Table";
 import SearchBar from "../components/SearchBar";
+import FilterTabs from "./components/FilterTab";
 
 type Customer = {
   id: number;
@@ -20,8 +21,7 @@ type Customer = {
 const customers: Customer[] = [
   {
     id: 1,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5CHxFsm3oy6-RLHIH_86pJTJQG0NfBFwuL-VBlZ0RWEvR8S-I4_EdiLaUSpI3a7y5on6dzicBciZuQRkRALKG009wpZQHd8GnGCEsjQ&s=10",
+    image: "",
     name: "Aiko Tanaka",
     plan: "Pro · monthly",
     role: "Learner",
@@ -39,7 +39,7 @@ const customers: Customer[] = [
     role: "Learner",
     words: 1622,
     streak: 7,
-    status: "Active",
+    status: "Inactive",
     mrr: "$6",
   },
 ];
@@ -82,21 +82,25 @@ const columns = [
 
 export default function CustomerPage() {
   const [search, setSearch] = useState("");
-
-  const filtered = customers.filter((c) =>
-    c.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const [filter, setFilter] = useState("All");
 
   return (
     <div>
       <Header title="Customers" />
       <div className="py-6 px-6 flex flex-col gap-3">
-        <SearchBar
-          placeholder="Search customers..."
-          value={search}
-          onChange={setSearch}
-        />
-        <Table columns={columns} data={filtered} />
+        <div className="flex items-center justify-between">
+          <SearchBar
+            placeholder="Search customers..."
+            value={search}
+            onChange={setSearch}
+          />
+          <FilterTabs
+            options={["All", "Pro", "Free"]}
+            value={filter}
+            onChange={setFilter}
+          />
+        </div>
+        <Table columns={columns} data={customers} total={customers.length} />
       </div>
     </div>
   );
