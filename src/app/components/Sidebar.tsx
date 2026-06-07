@@ -15,8 +15,8 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-border">
-      <div className="flex flex-col gap-4 px-4 py-4 mt-2">
+    <nav className="w-64 h-screen bg-primary text-white border-r-2 border-border flex flex-col">
+      <div className="flex flex-col gap-4 px-4 py-4 mt-2 flex-1">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-green-700 rounded-lg flex items-center justify-center">
@@ -46,6 +46,19 @@ export default function Sidebar() {
             </Link>
           );
         })}
+      </div>
+
+      {/* User info */}
+      <div className="px-4 py-4 border-t border-border">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-xs font-bold text-gray-900 shrink-0">
+            AU
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium">You</span>
+            <span className="text-xs text-gray-500">Admin</span>
+          </div>
+        </div>
       </div>
     </nav>
   );
