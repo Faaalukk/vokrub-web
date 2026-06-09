@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --background: #121915;
+  --foreground: #e8f0eb;
+  --primary: oklch(0.248 0.013 160);
+  --accent: #52b788;
+  --border: #333a35;
+  --card: #1a2620;
+  --muted: #1e2d24;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --font-sans: "LINE Seed", sans;
+  --font-mono: var(--font-geist-mono);
+  --font-jetbrains: var(--font-jetbrains-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@font-face {
+  font-family: "LINE Seed";
+  src: url("../../public/fonts/LINESeedSansTH_W_Bd.woff2") format("woff2");
+  font-weight: 700;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
