@@ -42,7 +42,7 @@ export default function RevenueCard() {
           <YAxis hide />
           <Tooltip
             cursor={{ fill: "transparent" }}
-            formatter={(value: number) => [formatValue(value), "Revenue"]}
+            formatter={(value) => [formatValue(Number(value)), "Revenue"]}
             contentStyle={{
               background: "#1e2d24",
               border: "none",
@@ -55,7 +55,7 @@ export default function RevenueCard() {
             radius={[6, 6, 4, 4]}
             label={{
               position: "top",
-              formatter: formatValue,
+              formatter: (v: unknown) => formatValue(Number(v)),
               fill: "#9ca3af",
               fontSize: 11,
             }}
